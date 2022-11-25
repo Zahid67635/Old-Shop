@@ -87,7 +87,7 @@ const SignUp = () => {
 
                 <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Register</button>
                 <div>
-                    <h2 className='text-xl font-bold'> {signUpError ? signUpError : ''}</h2>
+                    {signUpError ? <p className='text-red-500'>{signUpError}</p> : ''}
                 </div>
                 <div>
                     <p>Already have an account?<Link to='/login'><span className='font-bold text-green-500'> Sign-In</span></Link></p>
