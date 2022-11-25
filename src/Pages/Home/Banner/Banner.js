@@ -3,7 +3,7 @@ import shop from '../../../assets/old-shop.jpg';
 
 const Banner = () => {
     return (
-        <div className='my-5'>
+        <div className='mb-5'>
             <div className="hero min-h-screen" style={{ backgroundImage: `url(${shop})` }}>
                 <div className="hero-overlay bg-opacity-60"></div>
                 <div className="hero-content text-center text-neutral-content">

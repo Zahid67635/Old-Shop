@@ -5,6 +5,7 @@ import Blog from './Pages/Blog/Blog';
 import Home from './Pages/Home/Home';
 import Login from './Pages/Login/Login';
 import SignUp from './Pages/SignUp/SignUp';
+import Error from './Shared/Error/Error';
 
 function App() {
   const router = createBrowserRouter([
@@ -30,7 +31,13 @@ function App() {
           element: <Blog></Blog>
         },
       ]
+
+    },
+    {
+      path: '*',
+      element: <Error></Error>
     }
+
   ])
   return (
     <div className="">
