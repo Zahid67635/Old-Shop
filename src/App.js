@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
 import Main from './layout/Main';
+import Blog from './Pages/Blog/Blog';
 import Home from './Pages/Home/Home';
 import Login from './Pages/Login/Login';
 import SignUp from './Pages/SignUp/SignUp';
@@ -24,15 +25,15 @@ function App() {
           element: <SignUp></SignUp>
         },
 
-        // {
-        //   path: '/blog',
-        //   element: 
-        // },
+        {
+          path: '/blog',
+          element: <Blog></Blog>
+        },
       ]
     }
   ])
   return (
-    <div className="App">
+    <div className="">
       <RouterProvider router={router}>
 
       </RouterProvider>
