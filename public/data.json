@@ -1,20 +1,62 @@
 [
     {
+        "name": "Sofa",
+        "category": "Drawing",
+        "price": "170$",
+        "image": "https://i.ibb.co/d2RDp4B/sofa.jpg",
+        "location": "Dhaka",
+        "reSellPrice": "100$",
+        "age": "6 months",
+        "time": "2 days ago"
+    },
+    {
         "name": "Chair",
         "category": "Dinning",
         "price": "50$",
-        "image": "https://i.ibb.co/5stCBPL/chair.jpg"
+        "image": "https://i.ibb.co/5stCBPL/chair.jpg",
+        "location": "Dhaka",
+        "reSellPrice": "30$",
+        "age": "6 months",
+        "time": "2 days ago"
     },
     {
         "name": "Bed",
         "category": "Bed Room",
         "price": "150$",
-        "image": "https://i.ibb.co/hm5ZLPV/bed.jpg"
+        "image": "https://i.ibb.co/hm5ZLPV/bed.jpg",
+        "location": "Dhaka",
+        "reSellPrice": "100$",
+        "age": "6 months",
+        "time": "1 days ago"
     },
     {
         "name": "Table",
         "category": "Dinning",
         "price": "100$",
-        "image": "https://i.ibb.co/ChhvwSH/6.jpg"
+        "image": "https://i.ibb.co/ChhvwSH/6.jpg",
+        "location": "Dhaka",
+        "reSellPrice": "70$",
+        "age": "6 months",
+        "time": "4 days ago"
+    },
+    {
+        "name": "Classy Bed",
+        "category": "Bed room",
+        "price": "160$",
+        "image": "https://i.ibb.co/S30xT4L/bed2.jpg",
+        "location": "Dhaka",
+        "reSellPrice": "110$",
+        "age": "6 months",
+        "time": "2 days ago"
+    },
+    {
+        "name": "Sofa",
+        "category": "Drawing",
+        "price": "140$",
+        "image": "https://i.ibb.co/c1dtfvY/sofa2.webp",
+        "location": "Dhaka",
+        "reSellPrice": "80$",
+        "age": "6 months",
+        "time": "3 days ago"
     }
 ]
