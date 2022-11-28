@@ -1,6 +1,6 @@
-import React from 'react';
+import BookModal from '../../../Shared/BookModal/BookModal';
 
-const Item = ({ details }) => {
+const Item = ({ details, product, setProduct }) => {
     const { name, price, image, reSellPrice, time, age, location } = details
     return (
         <div className='mx-auto'>
@@ -17,8 +17,10 @@ const Item = ({ details }) => {
                             <p className='text-xl'>Price: <del>{price}</del> {reSellPrice} </p>
                             <p className='text-blue-700 font-bold'>Posted {time}</p>
                         </div>
-                        <button className="btn btn-primary">Buy Now</button>
+                        <label htmlFor="bookModal" className="btn btn-primary" onClick={() => setProduct(details)}>Book Now</label>
+
                     </div>
+                    <BookModal details={product}></BookModal>
                 </div>
             </div>
         </div>
