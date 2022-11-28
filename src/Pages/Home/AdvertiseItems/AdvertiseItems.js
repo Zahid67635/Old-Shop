@@ -5,7 +5,7 @@ const AdvertiseItems = () => {
     const [items, setItems] = useState([])
     const [product, setProduct] = useState({})
     useEffect(() => {
-        fetch('data.json')
+        fetch('http://localhost:5000/products')
             .then(res => res.json())
             .then(data => setItems(data))
     }, [])
