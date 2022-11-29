@@ -8,7 +8,11 @@ const MyOrders = () => {
     const { data: myOrders = [] } = useQuery({
         queryKey: ['bookings', user?.email],
         queryFn: async () => {
-            const res = await fetch(url);
+            const res = await fetch(url, {
+                headers: {
+                    authorization: `bearer ${localStorage.getItem('oldShopToken')}`
+                }
+            });
             const data = res.json();
             return data;
         }
@@ -23,15 +27,31 @@ const MyOrders = () => {
                             <th>Item Name</th>
                             <th>Email</th>
                             <th>Contact Number</th>
+                            <th>Price</th>
+                            <th>Payment</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
                             myOrders.map((order, i) => <tr className="hover">
                                 <th>{i + 1}</th>
-                                <td>{order.itemName}</td>
+                                <td>
+                                    <div className="flex items-center space-x-3">
+                                        <div className="avatar">
+                                            <div className="mask mask-squircle w-12 h-12">
+                                                <img src={order.image} alt='' />
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div className="font-bold">{order.itemName}</div>
+
+                                        </div>
+                                    </div>
+                                </td>
                                 <td>{order.email}</td>
                                 <td>{order.phone}</td>
+                                <td>{order.reSellPrice}</td>
+                                <td><button className='btn btn-outline btn-warning btn-sm'>Pay</button></td>
                             </tr>)
                         }
 
