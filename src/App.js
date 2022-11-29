@@ -6,6 +6,7 @@ import PerCategory from './Pages/Home/Catagories/PerCategory/PerCategory';
 import Home from './Pages/Home/Home';
 import Login from './Pages/Login/Login';
 import SignUp from './Pages/SignUp/SignUp';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
 import Error from './Shared/Error/Error';
 
 function App() {
@@ -33,7 +34,7 @@ function App() {
         },
         {
           path: '/product-under-category/:category',
-          element: <PerCategory></PerCategory>,
+          element: <PrivateRoute><PerCategory></PerCategory></PrivateRoute>,
           loader: ({ params }) => fetch(`http://localhost:5000/category/${params.category}`)
         }
       ]

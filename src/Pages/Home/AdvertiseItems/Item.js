@@ -1,8 +1,10 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { AuthContext } from '../../../Contexts/ContextProvider';
 import BookModal from '../../../Shared/BookModal/BookModal';
 
 const Item = ({ details, product, setProduct }) => {
-    const { name, price, image, reSellPrice, time, age, location } = details
+    const { name, price, image, reSellPrice, time, age, location } = details;
+    const { user } = useContext(AuthContext)
     return (
         <div className='mx-auto'>
             <div className="card card-compact w-96 h-96 bg-base-100 shadow-xl">
@@ -18,7 +20,7 @@ const Item = ({ details, product, setProduct }) => {
                             <p className='text-xl'>Price: <del>{price}</del> {reSellPrice} </p>
                             <p className='text-blue-700 font-bold'>Posted {time}</p>
                         </div>
-                        <label htmlFor="bookModal" className="btn btn-primary" onClick={() => setProduct(details)}>Book Now</label>
+                        {user ? <><label htmlFor="bookModal" className="btn btn-primary" onClick={() => setProduct(details)}>Book Now</label></> : <label htmlFor="bookModal" className="btn btn-primary" disabled onClick={() => setProduct(details)}>Book Now</label>}
 
                     </div>
                     {product && <BookModal details={product} setProduct={setProduct}></BookModal>}

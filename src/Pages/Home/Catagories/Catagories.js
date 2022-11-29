@@ -1,13 +1,17 @@
+import { useQuery } from '@tanstack/react-query';
 import React, { useEffect, useState } from 'react';
 import Catagory from './Catagory';
 
 const Catagories = () => {
-    const [cats, setCats] = useState([])
-    useEffect(() => {
-        fetch('http://localhost:5000/categories')
-            .then(res => res.json())
-            .then(data => setCats(data))
-    }, [])
+
+    const { data: cats = [] } = useQuery({
+        queryKey: ['categories'],
+        queryFn: async () => {
+            const res = await fetch('http://localhost:5000/categories');
+            const data = await res.json();
+            return data;
+        }
+    })
     return (
         <div className='my-10'>
             <h2 className='text-3xl font-bold text-center'>All Categories :</h2>
