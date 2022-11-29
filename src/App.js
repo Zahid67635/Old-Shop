@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
 import Main from './layout/Main';
 import Blog from './Pages/Blog/Blog';
+import PerCategory from './Pages/Home/Catagories/PerCategory/PerCategory';
 import Home from './Pages/Home/Home';
 import Login from './Pages/Login/Login';
 import SignUp from './Pages/SignUp/SignUp';
@@ -30,6 +31,11 @@ function App() {
           path: '/blog',
           element: <Blog></Blog>
         },
+        {
+          path: '/product-under-category/:category',
+          element: <PerCategory></PerCategory>,
+          loader: ({ params }) => fetch(`http://localhost:5000/category/${params.category}`)
+        }
       ]
 
     },

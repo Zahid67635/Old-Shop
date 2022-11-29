@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import BookModal from '../../../Shared/BookModal/BookModal';
 
 const Item = ({ details, product, setProduct }) => {
@@ -20,7 +21,7 @@ const Item = ({ details, product, setProduct }) => {
                         <label htmlFor="bookModal" className="btn btn-primary" onClick={() => setProduct(details)}>Book Now</label>
 
                     </div>
-                    <BookModal details={product}></BookModal>
+                    {product && <BookModal details={product} setProduct={setProduct}></BookModal>}
                 </div>
             </div>
         </div>

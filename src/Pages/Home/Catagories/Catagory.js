@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Catagory = ({ cat }) => {
     const { image, category } = cat;
@@ -10,7 +11,7 @@ const Catagory = ({ cat }) => {
                     <h2 className="card-title text-white">{category}</h2>
                     <p>All furniture makes your home beautiful and you will surprise of their beauty.</p>
                     <div className="card-actions justify-end">
-                        <button className="btn btn-primary text-white">Visit</button>
+                        <Link to={`/product-under-category/${category}`}><button className="btn btn-primary text-white">Visit</button></Link>
                     </div>
                 </div>
             </div>

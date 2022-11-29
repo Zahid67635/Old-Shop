@@ -1,14 +1,18 @@
+import { useQuery } from '@tanstack/react-query';
 import React, { useEffect, useState } from 'react';
 import Item from './Item';
 
 const AdvertiseItems = () => {
-    const [items, setItems] = useState([])
     const [product, setProduct] = useState({})
-    useEffect(() => {
-        fetch('http://localhost:5000/products')
-            .then(res => res.json())
-            .then(data => setItems(data))
-    }, [])
+
+    const { data: items = [] } = useQuery({
+        queryKey: ['products'],
+        queryFn: async () => {
+            const res = await fetch('http://localhost:5000/products');
+            const data = await res.json();
+            return data;
+        }
+    })
     return (
         <div className='my-32'>
             <h2 className='text-3xl text-center ml-5 my-10 font-bold'>Available Products :</h2>
