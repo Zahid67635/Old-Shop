@@ -1,7 +1,10 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
+import DashboardLayout from './layout/DashboardLayout';
 import Main from './layout/Main';
 import Blog from './Pages/Blog/Blog';
+import Dashboard from './Pages/Dashboard/Dashboard';
+import MyOrders from './Pages/Dashboard/MyOrders/MyOrders';
 import PerCategory from './Pages/Home/Catagories/PerCategory/PerCategory';
 import Home from './Pages/Home/Home';
 import Login from './Pages/Login/Login';
@@ -39,6 +42,25 @@ function App() {
         }
       ]
 
+    },
+    {
+      path: '/dashboard',
+      element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+      children: [
+
+        {
+          path: '/dashboard/myorders',
+          element: <MyOrders></MyOrders>
+        },
+        {
+          path: '/dashboard',
+          element: <MyOrders></MyOrders>
+        },
+        // {
+        //   path: 'dashboard/my-order',
+        //   element: 
+        // }
+      ]
     },
     {
       path: '*',

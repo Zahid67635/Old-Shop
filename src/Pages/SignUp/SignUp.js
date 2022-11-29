@@ -2,11 +2,17 @@ import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/ContextProvider';
+import useToken from '../../hooks/useToken';
 
 const SignUp = () => {
     const { createUser, updateUser } = useContext(AuthContext);
     const [signUpError, setSignUpError] = useState('');
     const navigate = useNavigate();
+    const [createdUserEmail, setCreatedUserEmail] = useState('')
+    const [token] = useToken(createdUserEmail);
+    if (token) {
+        navigate('/');
+    }
     const handleSubmit = (e) => {
         setSignUpError('');
         const form = e.target;
@@ -27,7 +33,8 @@ const SignUp = () => {
                 updateUser(userInfo)
                     .then(() => {
                         console.log(userInfo);
-                        navigate('/')
+                        saveUser(name, email)
+
                     })
                     .catch(err => console.log(err));
                 form.reset()
@@ -42,7 +49,21 @@ const SignUp = () => {
 
         e.preventDefault()
 
+    }
 
+    const saveUser = (name, email) => {
+        const user = { name, email };
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                setCreatedUserEmail(email);
+            })
     }
     return (
         <div>
