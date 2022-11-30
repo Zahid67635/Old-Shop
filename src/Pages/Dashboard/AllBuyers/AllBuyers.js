@@ -18,7 +18,7 @@ const AllBuyers = () => {
     })
 
     const handleDelete = email => {
-        fetch(`http://localhost:5000/bookings/?email=${email}`, {
+        fetch(`http://localhost:5000/bookings?email=${email}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('oldShopToken')}`
@@ -34,6 +34,7 @@ const AllBuyers = () => {
     }
     return (
         <div>
+            <h1 className='font-bold text-xl mb-2'>All Buyers - </h1>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>

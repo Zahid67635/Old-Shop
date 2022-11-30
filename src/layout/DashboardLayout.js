@@ -1,14 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { AuthContext } from '../Contexts/ContextProvider';
+import useAdmin from '../hooks/useAdmin';
 import useSeller from '../hooks/useSeller';
 import Dashboard from '../Pages/Dashboard/Dashboard';
 import Navbar from '../Shared/Navbar/Navbar';
 
 const DashboardLayout = () => {
-    const { user } = useContext(AuthContext)
-    const [isSeller] = useSeller(user.email)
-
+    const { user } = useContext(AuthContext);
+    const [isSeller] = useSeller(user.email);
+    const [isAdmin] = useAdmin(user.email);
     return (
         <div>
             <Navbar></Navbar>
@@ -24,13 +25,18 @@ const DashboardLayout = () => {
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80 bg-base-100 text-base-content">
                         {
-                            isSeller.role === 'seller' ? <><li><Link to='/dashboard/addProduct'>Add A product</Link></li>
-                                <li><Link to='/dashboard/myProducts'>My Products</Link></li></> :
-                                <li><Link to='/dashboard/myorders'>My Orders</Link></li>
+                            isSeller?.role === 'seller' && <><li><Link to='/dashboard/addProduct'>Add A product</Link></li>
+                                <li><Link to='/dashboard/myProducts'>My Products</Link></li></>
+
+                        }
+                        {
+                            isAdmin?.role === 'admin' ? <><li><Link to='/dashboard/allBuyers'>All Buyers</Link></li>
+                                <li><Link to='/dashboard/allSellers'>All Sellers</Link></li></> : ''
+                        }
+                        {
+                            isAdmin?.role !== 'admin' && isSeller?.role !== 'seller' && <li><Link to='/dashboard/myorders'>My Orders</Link></li>
                         }
 
-                        <li><Link to='/dashboard/allBuyers'>All Buyers</Link></li>
-                        <li><Link to='/dashboard/allSellers'>All Sellers</Link></li>
 
                     </ul>
 

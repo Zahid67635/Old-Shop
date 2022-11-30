@@ -12,6 +12,7 @@ import Home from './Pages/Home/Home';
 import Login from './Pages/Login/Login';
 import SellerSignUp from './Pages/SignUp/SellerSignUp';
 import SignUp from './Pages/SignUp/SignUp';
+import AdminRoute from './PrivateRoute/AdminRoute/AdminRoute';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import SellerRoute from './PrivateRoute/SellerRoute/SellerRoute';
 import Error from './Shared/Error/Error';
@@ -66,11 +67,11 @@ function App() {
         },
         {
           path: '/dashboard/allBuyers',
-          element: <AllBuyers></AllBuyers>
+          element: <AdminRoute><AllBuyers></AllBuyers></AdminRoute>
         },
         {
           path: '/dashboard/allSellers',
-          element: <AllSellers></AllSellers>
+          element: <AdminRoute><AllSellers></AllSellers></AdminRoute>
         },
         {
           path: '/dashboard/addProduct',

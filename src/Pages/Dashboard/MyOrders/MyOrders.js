@@ -4,9 +4,9 @@ import { AuthContext } from '../../../Contexts/ContextProvider';
 
 const MyOrders = () => {
     const { user } = useContext(AuthContext)
-    const url = `http://localhost:5000/bookings?email=${user?.email}`
+    const url = `http://localhost:5000/userBookings?email=${user?.email}`
     const { data: myOrders = [] } = useQuery({
-        queryKey: ['bookings', user?.email],
+        queryKey: ['userBookings', user?.email],
         queryFn: async () => {
             const res = await fetch(url, {
                 headers: {
