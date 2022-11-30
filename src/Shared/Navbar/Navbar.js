@@ -13,23 +13,23 @@ const Navbar = () => {
                         <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">OLD-SHOP</span>
                     </a>
                     <div class="flex md:order-2">
-                        <ul className='menu menu-horizontal p-0'>
-                            <li tabIndex={0}>
-                                <a>
-                                    Parent
-                                    <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>
-                                </a>
-                                <ul className="p-2 bg-base-100">
-                                    <li><a>Submenu 1</a></li>
-                                    <li><a>Submenu 2</a></li>
-                                </ul>
-                            </li>
-                        </ul>
+
                         {
                             user ? <><button onClick={logOut} type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">SIGN-OUT</button></>
                                 :
-                                <> <Link to='/login' className='mr-2'><button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">SIGN-IN</button></Link>
-                                    <Link to='/signup' className='mr-2'><button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">SIGN-UP</button></Link></>
+                                <> <ul className='menu menu-horizontal p-0'>
+                                    <li tabIndex={0}>
+                                        <Link to='/sellerSignUp'>
+                                            SignUp
+                                            <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>
+                                        </Link>
+                                        <ul className="p-2 bg-base-100">
+                                            <li><Link to='/sellerSignUp'>Seller</Link></li>
+                                            <li><Link to='buyerSignUp'>Buyer</Link></li>
+                                        </ul>
+                                    </li>
+                                </ul><Link to='/login' className='mr-2'><button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">SIGN-IN</button></Link>
+                                </>
                         }
 
 

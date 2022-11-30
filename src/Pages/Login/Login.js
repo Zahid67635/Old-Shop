@@ -21,6 +21,7 @@ const Login = () => {
         googleSignIn(provider)
             .then(result => {
                 const user = result.user;
+                setLoginUserEmail(user?.email);
                 console.log(user);
                 toast.success('logged in')
             })
@@ -30,7 +31,6 @@ const Login = () => {
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password);
         e.preventDefault()
 
         signIn(email, password)

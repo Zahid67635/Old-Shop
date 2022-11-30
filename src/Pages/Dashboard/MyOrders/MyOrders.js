@@ -32,8 +32,8 @@ const MyOrders = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {
-                            myOrders.map((order, i) => <tr className="hover">
+                        {myOrders &&
+                            myOrders?.map((order, i) => <tr className="hover">
                                 <th>{i + 1}</th>
                                 <td>
                                     <div className="flex items-center space-x-3">

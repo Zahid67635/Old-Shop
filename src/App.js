@@ -3,11 +3,13 @@ import './App.css';
 import DashboardLayout from './layout/DashboardLayout';
 import Main from './layout/Main';
 import Blog from './Pages/Blog/Blog';
+import AddProduct from './Pages/Dashboard/AddProduct/AddProduct';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import MyOrders from './Pages/Dashboard/MyOrders/MyOrders';
 import PerCategory from './Pages/Home/Catagories/PerCategory/PerCategory';
 import Home from './Pages/Home/Home';
 import Login from './Pages/Login/Login';
+import SellerSignUp from './Pages/SignUp/SellerSignUp';
 import SignUp from './Pages/SignUp/SignUp';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import Error from './Shared/Error/Error';
@@ -26,10 +28,6 @@ function App() {
           path: '/login',
           element: <Login></Login>
         },
-        {
-          path: '/signup',
-          element: <SignUp></SignUp>
-        },
 
         {
           path: '/blog',
@@ -39,6 +37,14 @@ function App() {
           path: '/product-under-category/:category',
           element: <PrivateRoute><PerCategory></PerCategory></PrivateRoute>,
           loader: ({ params }) => fetch(`http://localhost:5000/category/${params.category}`)
+        },
+        {
+          path: '/sellerSignUp',
+          element: <SellerSignUp></SellerSignUp>
+        },
+        {
+          path: 'buyerSignUp',
+          element: <SignUp></SignUp>
         }
       ]
 
@@ -56,10 +62,10 @@ function App() {
           path: '/dashboard',
           element: <MyOrders></MyOrders>
         },
-        // {
-        //   path: 'dashboard/my-order',
-        //   element: 
-        // }
+        {
+          path: '/dashboard/addProduct',
+          element: <AddProduct></AddProduct>
+        }
       ]
     },
     {
