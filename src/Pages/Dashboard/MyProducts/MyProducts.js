@@ -5,7 +5,7 @@ import { AuthContext } from '../../../Contexts/ContextProvider';
 
 const MyProducts = () => {
     const { user } = useContext(AuthContext)
-    const url = `http://localhost:5000/sellerProducts?email=${user?.email}`
+    const url = `https://old-shop-server.vercel.app/sellerProducts?email=${user?.email}`
     const { data: myProducts = [], refetch, isLoading } = useQuery({
         queryKey: ['sellerProducts', user?.email],
         queryFn: async () => {
@@ -19,7 +19,7 @@ const MyProducts = () => {
         }
     })
     const handleDelete = id => {
-        fetch(`http://localhost:5000/sellerProducts/${id}`, {
+        fetch(`https://old-shop-server.vercel.app/sellerProducts/${id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('oldShopToken')}`

@@ -19,7 +19,7 @@ const AddProduct = () => {
             name, category, email, price, reSellPrice, age, image, location: 'Dhaka'
         }
 
-        fetch('http://localhost:5000/products', {
+        fetch('https://old-shop-server.vercel.app/products', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

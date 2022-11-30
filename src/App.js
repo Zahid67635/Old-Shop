@@ -39,7 +39,7 @@ function App() {
         {
           path: '/product-under-category/:category',
           element: <PrivateRoute><PerCategory></PerCategory></PrivateRoute>,
-          loader: ({ params }) => fetch(`http://localhost:5000/category/${params.category}`)
+          loader: ({ params }) => fetch(`https://old-shop-server.vercel.app/category/${params.category}`)
         },
         {
           path: '/sellerSignUp',

@@ -7,7 +7,7 @@ const AllBuyers = () => {
     const { data: allBuyers = [], refetch } = useQuery({
         queryKey: ['bookings'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/bookings`, {
+            const res = await fetch(`https://old-shop-server.vercel.app/bookings`, {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('oldShopToken')}`
                 }
@@ -18,7 +18,7 @@ const AllBuyers = () => {
     })
 
     const handleDelete = email => {
-        fetch(`http://localhost:5000/bookings?email=${email}`, {
+        fetch(`https://old-shop-server.vercel.app/bookings?email=${email}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('oldShopToken')}`
