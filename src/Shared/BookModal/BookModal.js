@@ -27,8 +27,8 @@ const BookModal = ({ details, setProduct }) => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                setProduct(null)
                 toast.success('booking confirmed')
+                setProduct(null)
             })
 
     }

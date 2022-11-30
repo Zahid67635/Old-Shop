@@ -1,11 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { AuthContext } from '../../../Contexts/ContextProvider';
 
 const MyProducts = () => {
     const { user } = useContext(AuthContext)
     const url = `http://localhost:5000/sellerProducts?email=${user?.email}`
-    const { data: myProducts = [] } = useQuery({
+    const { data: myProducts = [], refetch, isLoading } = useQuery({
         queryKey: ['sellerProducts', user?.email],
         queryFn: async () => {
             const res = await fetch(url, {
@@ -17,6 +18,24 @@ const MyProducts = () => {
             return data;
         }
     })
+    const handleDelete = email => {
+        fetch(`http://localhost:5000/sellerProducts/${email}`, {
+            method: 'DELETE',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('oldShopToken')}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount > 0) {
+                    refetch();
+                    toast.success(`deleted successfully`)
+                }
+            })
+    }
+    if (isLoading) {
+        return <p>loading....</p>
+    }
     return (
         <div>
             <div className="overflow-x-auto">
@@ -51,7 +70,7 @@ const MyProducts = () => {
                                 <td>{order.email}</td>
                                 <td>{order.phone}</td>
                                 <td>{order.reSellPrice}</td>
-                                <td><button className='btn btn-outline btn-warning btn-sm'>Delete</button></td>
+                                <td><button onClick={() => handleDelete(user.email)} className='btn btn-outline btn-warning btn-sm'>Delete</button></td>
                             </tr>)
                         }
 
