@@ -6,6 +6,7 @@ import Blog from './Pages/Blog/Blog';
 import AddProduct from './Pages/Dashboard/AddProduct/AddProduct';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import MyOrders from './Pages/Dashboard/MyOrders/MyOrders';
+import MyProducts from './Pages/Dashboard/MyProducts/MyProducts';
 import PerCategory from './Pages/Home/Catagories/PerCategory/PerCategory';
 import Home from './Pages/Home/Home';
 import Login from './Pages/Login/Login';
@@ -61,6 +62,10 @@ function App() {
         {
           path: '/dashboard',
           element: <MyOrders></MyOrders>
+        },
+        {
+          path: '/dashboard/myProducts',
+          element: <MyProducts></MyProducts>
         },
         {
           path: '/dashboard/addProduct',
