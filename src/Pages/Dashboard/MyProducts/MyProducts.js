@@ -18,8 +18,8 @@ const MyProducts = () => {
             return data;
         }
     })
-    const handleDelete = email => {
-        fetch(`http://localhost:5000/sellerProducts/${email}`, {
+    const handleDelete = id => {
+        fetch(`http://localhost:5000/sellerProducts/${id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('oldShopToken')}`
@@ -70,7 +70,7 @@ const MyProducts = () => {
                                 <td>{order.email}</td>
                                 <td>{order.phone}</td>
                                 <td>{order.reSellPrice}</td>
-                                <td><button onClick={() => handleDelete(user.email)} className='btn btn-outline btn-warning btn-sm'>Delete</button></td>
+                                <td><button onClick={() => handleDelete(order._id)} className='btn btn-outline btn-warning btn-sm'>Delete</button></td>
                             </tr>)
                         }
 

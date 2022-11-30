@@ -1,10 +1,10 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import './App.css';
 import DashboardLayout from './layout/DashboardLayout';
 import Main from './layout/Main';
 import Blog from './Pages/Blog/Blog';
 import AddProduct from './Pages/Dashboard/AddProduct/AddProduct';
-import Dashboard from './Pages/Dashboard/Dashboard';
+import AllBuyers from './Pages/Dashboard/AllBuyers/AllBuyers';
+import AllSellers from './Pages/Dashboard/AllSellers/AllSellers';
 import MyOrders from './Pages/Dashboard/MyOrders/MyOrders';
 import MyProducts from './Pages/Dashboard/MyProducts/MyProducts';
 import PerCategory from './Pages/Home/Catagories/PerCategory/PerCategory';
@@ -65,6 +65,14 @@ function App() {
           element: <SellerRoute><MyProducts></MyProducts></SellerRoute>
         },
         {
+          path: '/dashboard/allBuyers',
+          element: <AllBuyers></AllBuyers>
+        },
+        {
+          path: '/dashboard/allSellers',
+          element: <AllSellers></AllSellers>
+        },
+        {
           path: '/dashboard/addProduct',
           element: <SellerRoute><AddProduct></AddProduct></SellerRoute>
         }
@@ -77,7 +85,7 @@ function App() {
 
   ])
   return (
-    <div className="">
+    <div>
       <RouterProvider router={router}>
 
       </RouterProvider>
