@@ -1,7 +1,9 @@
 import React from 'react';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 const AddProduct = () => {
+    const navigate = useNavigate()
     const handleSubmit = (e) => {
         e.preventDefault()
         const form = e.target;
@@ -29,6 +31,7 @@ const AddProduct = () => {
                 console.log(data);
                 toast.success('booking confirmed');
                 form.reset()
+                navigate('/dashboard/myProducts')
             })
     }
     return (
@@ -59,7 +62,7 @@ const AddProduct = () => {
                     </div>
                     <div>
                         <label for="visitors" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Product Category</label>
-                        <input type="text" id="visitors" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Type your product category" name='category' required />
+                        <input type="text" id="visitors" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Bed Room / Drawing/ Dinning" name='category' required />
                     </div>
                     <div>
                         <label for="visitors" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Year Of Purchase</label>

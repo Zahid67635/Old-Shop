@@ -13,6 +13,7 @@ import Login from './Pages/Login/Login';
 import SellerSignUp from './Pages/SignUp/SellerSignUp';
 import SignUp from './Pages/SignUp/SignUp';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
+import SellerRoute from './PrivateRoute/SellerRoute/SellerRoute';
 import Error from './Shared/Error/Error';
 
 function App() {
@@ -60,16 +61,12 @@ function App() {
           element: <MyOrders></MyOrders>
         },
         {
-          path: '/dashboard',
-          element: <MyOrders></MyOrders>
-        },
-        {
           path: '/dashboard/myProducts',
-          element: <MyProducts></MyProducts>
+          element: <SellerRoute><MyProducts></MyProducts></SellerRoute>
         },
         {
           path: '/dashboard/addProduct',
-          element: <AddProduct></AddProduct>
+          element: <SellerRoute><AddProduct></AddProduct></SellerRoute>
         }
       ]
     },
