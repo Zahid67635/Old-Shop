@@ -21,25 +21,27 @@ const DashboardLayout = () => {
                     <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
 
                 </div>
-                <div className="drawer-side">
-                    <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-80 bg-base-100 text-base-content">
-                        {
-                            isSeller?.role === 'seller' && <><li><Link to='/dashboard/addProduct'>Add A product</Link></li>
-                                <li><Link to='/dashboard/myProducts'>My Products</Link></li></>
+                <div className="bg-base-100">
+                    <div className="drawer-side">
+                        <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
+                        <ul className="menu p-4 w-80 text-base-content">
+                            {
+                                isSeller?.role === 'seller' && <><li className='bg-cyan-300 p-2 font-bold'><Link to='/dashboard/addProduct'>Add A product</Link></li>
+                                    <li className='bg-cyan-300 p-2 font-bold'><Link to='/dashboard/myProducts'>My Products</Link></li></>
 
-                        }
-                        {
-                            isAdmin?.role === 'admin' ? <><li><Link to='/dashboard/allBuyers'>All Buyers</Link></li>
-                                <li><Link to='/dashboard/allSellers'>All Sellers</Link></li></> : ''
-                        }
-                        {
-                            isAdmin?.role !== 'admin' && isSeller?.role !== 'seller' && <li><Link to='/dashboard/myorders'>My Orders</Link></li>
-                        }
+                            }
+                            {
+                                isAdmin?.role === 'admin' ? <><li className='bg-cyan-300 p-2 font-bold'><Link to='/dashboard/allBuyers'>All Buyers</Link></li>
+                                    <li className='bg-cyan-300 p-2 font-bold'><Link to='/dashboard/allSellers'>All Sellers</Link></li></> : ''
+                            }
+                            {
+                                isAdmin?.role !== 'admin' && isSeller?.role !== 'seller' && <li className='bg-cyan-300 p-2 font-bold'><Link to='/dashboard/myorders'>My Orders</Link></li>
+                            }
 
 
-                    </ul>
+                        </ul>
 
+                    </div>
                 </div>
             </div>
         </div>

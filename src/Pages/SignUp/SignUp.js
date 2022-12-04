@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/ContextProvider';
@@ -10,9 +10,11 @@ const SignUp = () => {
     const navigate = useNavigate();
     const [createdUserEmail, setCreatedUserEmail] = useState('')
     const [token] = useToken(createdUserEmail);
-    if (token) {
-        navigate('/');
-    }
+    useEffect(() => {
+        if (token) {
+            navigate('/');
+        }
+    }, [token])
     const handleSubmit = (e) => {
         setSignUpError('');
         const form = e.target;

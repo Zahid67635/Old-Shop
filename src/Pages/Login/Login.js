@@ -1,5 +1,6 @@
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
+import { useEffect } from 'react';
 import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/ContextProvider';
@@ -7,25 +8,29 @@ import useToken from '../../hooks/useToken';
 
 const Login = () => {
     const { signIn, googleSignIn } = useContext(AuthContext);
-    const [signUpError, setSignUpError] = useState('');
+    const [signInError, setSignInError] = useState('');
     const [loginUserEmail, setLoginUserEmail] = useState('');
     const provider = new GoogleAuthProvider();
     const navigate = useNavigate();
     const location = useLocation();
     const [token] = useToken(loginUserEmail);
     const from = location.state?.from?.pathname || '/'
-    if (token) {
-        navigate(from, { replace: true });
-    }
+    useEffect(() => {
+        if (token) {
+            navigate(from, { replace: true });
+        }
+    }, [from, navigate, token])
     const googleSign = () => {
         googleSignIn(provider)
             .then(result => {
                 const user = result.user;
-                setLoginUserEmail(user?.email);
-                console.log(user);
+                saveUser(user.displayName, user.email)
                 toast.success('logged in')
             })
-            .catch(er => console.log(er))
+            .catch(er => {
+                console.log(er)
+                setSignInError(er.message)
+            })
     }
     const handleSubmit = (e) => {
         const form = e.target;
@@ -42,9 +47,23 @@ const Login = () => {
             })
             .catch(er => {
                 console.log(er)
-                setSignUpError(er.message)
+                setSignInError(er.message)
             })
 
+    }
+    const saveUser = (name, email) => {
+        const user = { name, email, role: 'buyer' };
+        fetch('https://old-shop-server.vercel.app/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                setLoginUserEmail(email);
+            })
     }
     return (
         <div>
@@ -69,7 +88,7 @@ const Login = () => {
                         </div>
                         <p>Create an account <Link to='/signup' className='text-bold text-blue-500'>Sign-Up</Link></p>
                         <div>
-                            {signUpError ? <p className='text-red-500'>{signUpError}</p> : ''}
+                            {signInError ? <p className='text-red-500'>{signInError}</p> : ''}
                         </div>
                         <div className='w-full'>
                             <button onClick={googleSign} type="button" className="text-white bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#4285F4]/55 mr-2 mb-2">

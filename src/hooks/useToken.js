@@ -11,7 +11,9 @@ const useToken = email => {
                         localStorage.setItem('oldShopToken', data.accessToken);
                         setToken(data.accessToken);
                     }
-                });
+                })
+                .catch(er => console.log(er))
+
         }
     }, [email]);
     return [token];

@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import ContextProvider from './Contexts/ContextProvider';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { Toaster } from 'react-hot-toast';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const queryClient = new QueryClient()
@@ -12,6 +13,7 @@ root.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <ContextProvider>
+        <Toaster />
         <App />
       </ContextProvider>
     </QueryClientProvider>
