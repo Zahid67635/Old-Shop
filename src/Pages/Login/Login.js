@@ -86,7 +86,7 @@ const Login = () => {
                                 <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                             </label>
                         </div>
-                        <p>Create an account <Link to='/signup' className='text-bold text-blue-500'>Sign-Up</Link></p>
+                        <p>Create an account <Link to='/buyerSignUp' className='text-bold text-blue-500'>Sign-Up</Link></p>
                         <div>
                             {signInError ? <p className='text-red-500'>{signInError}</p> : ''}
                         </div>
