@@ -23,7 +23,7 @@ const MyOrders = () => {
         <div>
             {orderLoading ? <p className='text-3xl text-center mt-10'>Loading...</p>
                 :
-                <div className="overflow-x-auto">
+                <div className="overflow-x-auto mx-2">
                     <table className="table w-full">
                         <thead>
                             <tr>
